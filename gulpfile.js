@@ -1,5 +1,6 @@
 // Gulp
 var gulp = require('gulp');
+var plumber = require('gulp-plumber');
 
 // Sass/CSS stuff
 var sass = require('gulp-sass');
@@ -15,10 +16,18 @@ var concatjs = require('gulp-concat');
 var svgmin = require('gulp-svgmin');
 var imagemin = require('gulp-imagemin');
 
+// error handling
+var onError = function (err) {  
+  console.log(err);
+};
+
 
 // compile all your Sass
 	gulp.task('sass', function (){
 		gulp.src(['./sass/main.scss', '!./dev/sass/_variables.scss'])
+			.pipe(plumber({
+		      errorHandler: onError
+		    }))
 			.pipe(sass({
 				includePaths: ['./sass'],
 				outputStyle: 'expanded'
