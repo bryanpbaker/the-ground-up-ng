@@ -43,6 +43,9 @@ var onError = function (err) {
 
 	gulp.task('bootstrap-sass', function (){
 		gulp.src(['./sass/bootstrap.scss'])
+			.pipe(plumber({
+		      errorHandler: onError
+		    }))
 			.pipe(sass({
 				includePaths: ['./sass'],
 				outputStyle: 'expanded'
@@ -60,6 +63,9 @@ var onError = function (err) {
 // JS
 	gulp.task('uglify-vendor', function(){
 		gulp.src('./js/vendor/*.js')
+			.pipe(plumber({
+		      errorHandler: onError
+		    }))
 			.pipe(uglify())
 			.pipe(concatjs('*.js'))
 			.pipe(rename('vendor.min.js'))
@@ -68,6 +74,9 @@ var onError = function (err) {
 
 	gulp.task('uglify-controllers', function(){
 		gulp.src('./js/app/controllers/src/*.js')
+			.pipe(plumber({
+		      errorHandler: onError
+		    }))
 			.pipe(concatjs('controllers.js'))
 			.pipe(gulp.dest('./js/app/controllers'))
 			.pipe(uglify())
@@ -77,6 +86,9 @@ var onError = function (err) {
 
 	gulp.task('uglify-directives', function(){
 		gulp.src('./js/app/directives/src/*.js')
+			.pipe(plumber({
+		      errorHandler: onError
+		    }))
 			.pipe(concatjs('directives.js'))
 			.pipe(gulp.dest('./js/app/directives'))
 			.pipe(uglify())
@@ -86,6 +98,9 @@ var onError = function (err) {
 
 	gulp.task('uglify-filters', function(){
 		gulp.src('./js/app/filters/src/*.js')
+			.pipe(plumber({
+		      errorHandler: onError
+		    }))
 			.pipe(concatjs('filters.js'))
 			.pipe(gulp.dest('./js/app/filters'))
 			.pipe(uglify())
@@ -95,6 +110,9 @@ var onError = function (err) {
 
 	gulp.task('uglify-services', function(){
 		gulp.src('./js/app/services/src/*.js')
+			.pipe(plumber({
+		      errorHandler: onError
+		    }))
 			.pipe(concatjs('services.js'))
 			.pipe(gulp.dest('./js/app/services'))
 			.pipe(uglify())
@@ -123,7 +141,7 @@ var onError = function (err) {
 gulp.task('watch', function() {
 	gulp.watch(['sass/styles/*.scss', 'sass/main.scss'], ['sass']);
 	gulp.watch(['sass/bootstrap/*.scss', 'sass/bootstrap.scss'], ['bootstrap-sass']);
-	gulp.watch('js/*/*.js', ['uglify-vendor', 'uglify-controllers', 'uglify-directives', 'uglify-filters', 'uglify-services']);
+	gulp.watch('js/**/src/*.js', ['uglify-controllers', 'uglify-directives', 'uglify-filters', 'uglify-services']);
 });
 
 
