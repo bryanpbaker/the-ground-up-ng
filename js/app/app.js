@@ -1,1 +1,1 @@
-var superheroFinder = angular.module('groundUpApp', []);
+var groundUpApp = angular.module('groundUpApp', []);
