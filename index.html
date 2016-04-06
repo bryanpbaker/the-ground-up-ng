@@ -19,6 +19,7 @@
         </style>
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+        <script src="dist/js/angular-ui-router.min.js"></script>
         <script src="js/app/app.js"></script>
         <script src="dist/js/controllers.min.js"></script>
         <script src="dist/js/directives.min.js"></script>
@@ -26,15 +27,15 @@
         <script src="dist/js/services.min.js"></script>
     </head>
     <body>
+        
+        <!-- Import your header partial -->
+        <div ng-include="'partials/header.html'"></div>
 
-        <div class="container">
-            <div class="col-sm-6 col-sm-offset-3"ng-controller="testController">
-                <h1>The Ground Up ng</h1>
-                <input class="form-control" type="text" ng-model="message">
-                <h3>{{ message }}</h3>
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-            </div>
-        </div>
+
+        <div class="container content-block" ui-view></div>
+
+        <!-- Import your footer partial -->
+        <div ng-include="'partials/footer.html'"></div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     </body>

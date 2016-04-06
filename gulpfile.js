@@ -139,7 +139,7 @@ var onError = function (err) {
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-	gulp.watch(['sass/styles/*.scss', 'sass/main.scss'], ['sass']);
+	gulp.watch(['sass/main.scss', 'sass/styles/**/*scss'], ['sass']);
 	gulp.watch(['sass/bootstrap/*.scss', 'sass/bootstrap.scss'], ['bootstrap-sass']);
 	gulp.watch('js/**/src/*.js', ['uglify-controllers', 'uglify-directives', 'uglify-filters', 'uglify-services']);
 });
