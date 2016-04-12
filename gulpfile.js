@@ -24,12 +24,12 @@ var onError = function (err) {
 
 // compile all your Sass
 	gulp.task('sass', function (){
-		gulp.src(['./sass/main.scss', '!./dev/sass/_variables.scss'])
+		gulp.src(['./assets/sass/main.scss', '!./dev/sass/_variables.scss'])
 			.pipe(plumber({
 		      errorHandler: onError
 		    }))
 			.pipe(sass({
-				includePaths: ['./sass'],
+				includePaths: ['./assets/sass'],
 				outputStyle: 'expanded'
 			}))
 			.pipe(prefix(
@@ -123,14 +123,14 @@ var onError = function (err) {
 
 // Images
 	gulp.task('svgmin', function() {
-		gulp.src('./img/svg/*.svg')
+		gulp.src('./assets/img/svg/*.svg')
 		.pipe(svgmin())
 		.pipe(gulp.dest('./img/svg'))
 		.pipe(gulp.dest('./dist/img/svg'));
 	});
 
 	gulp.task('imagemin', function () {
-		gulp.src('./img/**/*')
+		gulp.src('./assets/img/**/*')
 		.pipe(imagemin())
 		.pipe(gulp.dest('./img'))
 		.pipe(gulp.dest('./dist/img'));
@@ -139,8 +139,8 @@ var onError = function (err) {
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-	gulp.watch(['sass/main.scss', 'sass/styles/**/*scss'], ['sass']);
-	gulp.watch(['sass/bootstrap/*.scss', 'sass/bootstrap.scss'], ['bootstrap-sass']);
+	gulp.watch(['assets/sass/main.scss', 'assets/sass/styles/**/*scss'], ['sass']);
+	gulp.watch(['assets/sass/bootstrap/*.scss', 'assets/sass/bootstrap.scss'], ['bootstrap-sass']);
 	gulp.watch('js/**/src/*.js', ['uglify-controllers', 'uglify-directives', 'uglify-filters', 'uglify-services']);
 });
 
