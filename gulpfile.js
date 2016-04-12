@@ -125,14 +125,12 @@ var onError = function (err) {
 	gulp.task('svgmin', function() {
 		gulp.src('./assets/img/svg/*.svg')
 		.pipe(svgmin())
-		.pipe(gulp.dest('./img/svg'))
 		.pipe(gulp.dest('./dist/img/svg'));
 	});
 
 	gulp.task('imagemin', function () {
 		gulp.src('./assets/img/**/*')
 		.pipe(imagemin())
-		.pipe(gulp.dest('./img'))
 		.pipe(gulp.dest('./dist/img'));
 	});
 
