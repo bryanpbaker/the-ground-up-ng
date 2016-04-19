@@ -123,13 +123,13 @@ var onError = function (err) {
 
 // Images
 	gulp.task('svgmin', function() {
-		gulp.src('./assets/img/**/*.svg')
+		gulp.src('./assets/img/*.svg')
 		.pipe(svgmin())
 		.pipe(gulp.dest('./dist/img'));
 	});
 
 	gulp.task('imagemin', function () {
-		gulp.src('./assets/img/**/*')
+		gulp.src('./assets/img/*')
 		.pipe(imagemin())
 		.pipe(gulp.dest('./dist/img'));
 	});
