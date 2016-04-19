@@ -123,9 +123,9 @@ var onError = function (err) {
 
 // Images
 	gulp.task('svgmin', function() {
-		gulp.src('./assets/img/svg/*.svg')
+		gulp.src('./assets/img/**/*.svg')
 		.pipe(svgmin())
-		.pipe(gulp.dest('./dist/img/svg'));
+		.pipe(gulp.dest('./dist/img'));
 	});
 
 	gulp.task('imagemin', function () {
@@ -140,6 +140,7 @@ gulp.task('watch', function() {
 	gulp.watch(['assets/sass/main.scss', 'assets/sass/styles/**/*scss'], ['sass']);
 	gulp.watch(['assets/sass/bootstrap/*.scss', 'assets/sass/bootstrap.scss'], ['bootstrap-sass']);
 	gulp.watch('js/**/src/*.js', ['uglify-controllers', 'uglify-directives', 'uglify-filters', 'uglify-services']);
+	gulp.watch(['assets/img/*'], ['imagemin', 'svgmin']);
 });
 
 
